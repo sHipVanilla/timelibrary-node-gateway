@@ -124,3 +124,36 @@ export const getEventsLike = async (query: string) => {
         });
     return await event;
 }
+
+export const createEvent = async (query: Event) => {
+
+    var db = firebase.firestore()
+    var returnId = '';
+
+    await db.collection('event').add(query).then(
+        snapshot => {
+            if(snapshot) {
+                console.log(snapshot.id);
+                returnId = snapshot.id;
+            }
+        }
+    ).catch((err) => {
+            console.log('Error creating document', err);
+    });
+
+    return returnId;
+}
+
+export const updateEvent = async (id: string, query: Event) => {
+
+    var db = firebase.firestore()
+
+    await db.collection('event').doc(id).update(query).then(()=> {
+        console.log('document updated')
+    }
+    ).catch((err) => {
+            console.log('Error creating document', err);
+    });
+
+    return id + ' updated';
+}

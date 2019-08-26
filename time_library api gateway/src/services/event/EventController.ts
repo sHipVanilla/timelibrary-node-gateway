@@ -1,6 +1,8 @@
-import { getEventById, getEventsByIds, getEventsLike } from './providers/EventProvider';
+import { getEventById, getEventsByIds, getEventsLike, createEvent, updateEvent } from './providers/EventProvider';
 import { getGroupsByIds } from '../group/providers/GroupProvider';
 import { ResponseEnvelope } from '../../model/responseEnvelope';
+
+import { Event } from '../../model/event';
 
 export const _getEventById = async (q: string) => {
 
@@ -52,6 +54,52 @@ export const _getEventsLike = async (q: string) => {
     var startTms = new Date().getTime();
 
     returnData = await getEventsLike(q);
+
+    res.data = returnData;
+
+    res.generationMs = new Date().getTime() - startTms;
+
+    return res;
+}
+
+export const _createEvent = async (q: Event) => {
+
+    const res: ResponseEnvelope = {
+        dataAsOf: new Date().getTime(),
+        expires: new Date().getTime(),
+        cachable: false,
+        generationMs: 0,
+        data: []
+    };
+
+    var returnData:any;
+
+    var startTms = new Date().getTime();
+
+    returnData = await createEvent(q);
+
+    res.data = returnData;
+
+    res.generationMs = new Date().getTime() - startTms;
+
+    return res;
+}
+
+export const _updateEvent = async (id: string, q: Event) => {
+
+    const res: ResponseEnvelope = {
+        dataAsOf: new Date().getTime(),
+        expires: new Date().getTime(),
+        cachable: false,
+        generationMs: 0,
+        data: []
+    };
+
+    var returnData:any;
+
+    var startTms = new Date().getTime();
+
+    returnData = await updateEvent(id, q);
 
     res.data = returnData;
 
