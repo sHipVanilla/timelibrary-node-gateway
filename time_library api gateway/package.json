@@ -1,0 +1,47 @@
+{
+  "name": "time_library",
+  "version": "1.0.0",
+  "description": "A new way to view any history",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc-watch --onSuccess \"node ./dist/server.js\"",
+    "start": "npm run build && node dist/server.js",
+    "build": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matazombie/time_library.git"
+  },
+  "author": "matazombie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matazombie/time_library/issues"
+  },
+  "homepage": "https://github.com/matazombie/time_library#readme",
+  "devDependencies": {
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "@types/compression": "^1.0.0",
+    "@types/cors": "^2.8.5",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.17.0",
+    "@types/node": "^12.7.1",
+    "@types/request-promise": "^4.1.44",
+    "@types/swagger-ui-express": "^3.0.1",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^5.0.0-alpha.7",
+    "firebase": "^6.4.0",
+    "firebase-admin": "^8.3.0",
+    "firebase-functions": "^3.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "swagger-ui-express": "^4.0.7",
+    "tsc-watch": "^2.4.0"
+  }
+}
